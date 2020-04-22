@@ -21,7 +21,7 @@ module Dossier
     end
 
     def report
-      @report ||= report_class.new(options_params)
+      @report ||= report_class.new(options_params.to_unsafe_hash)
     end
 
     def options_params

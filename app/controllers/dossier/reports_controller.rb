@@ -21,11 +21,11 @@ module Dossier
     end
 
     def report
-      @report ||= report_class.new(options_params.to_unsafe_hash)
+      @report ||= report_class.new(options_params)
     end
 
     def options_params
-      params[:options].presence || {}
+      params[:options].presence ? params[:options].to_unsafe_hash : {}
     end
   end
 end

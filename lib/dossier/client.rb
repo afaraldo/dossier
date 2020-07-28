@@ -11,6 +11,8 @@ module Dossier
 
     def adapter
       @adapter ||= dossier_adapter.new(self.options.except(:dossier_adapter))
+      @adapter.connection.schema_search_path = ActiveRecord::Base.connection.schema_search_path
+      @adapter
     end
 
     def dossier_adapter
